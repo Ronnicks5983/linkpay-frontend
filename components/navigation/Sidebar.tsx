@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { clearTokens } from "@/lib/api";
 import { cn } from "@/lib/utils";
 
 const ITEMS = [
@@ -97,6 +98,17 @@ export default function Sidebar({ onNavigate }: { onNavigate?: () => void }) {
               </Link>
             );
           })}
+          <button
+            onClick={() => { clearTokens(); window.location.href = "/"; }}
+            className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-colors text-charcoal-700 hover:bg-surface-2 hover:text-charcoal-900"
+          >
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
+              <polyline points="16 17 21 12 16 7" />
+              <line x1="21" x2="9" y1="12" y2="12" />
+            </svg>
+            <span className="truncate">Logout</span>
+          </button>
         </nav>
 
         <div className="mt-4 rounded-xl bg-surface-2 p-3">
